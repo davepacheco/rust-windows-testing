@@ -14,4 +14,4 @@ jobs:
     - name: Build
       run: cargo build --verbose
     - name: Run program
-      run: cargo run 2>&1 | xxd
+      run: cargo run 2>&1 | xxd || true
