@@ -13,7 +13,9 @@ jobs:
     - uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b
     - name: Build
       run: cargo build --verbose
-    - name: Run program
-      run: cargo run -- --help | xxd
-    - name: Example output from some other command
-      run: grep --help 2>&1 | xxd
+    - name: Run program, generate help output
+      run: cargo run -- --help > help_file
+    - name: xxd help file
+      run: xxd help_file
+    - name: Run program, using help output
+      run: cargo run | xxd
