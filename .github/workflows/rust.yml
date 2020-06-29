@@ -14,6 +14,6 @@ jobs:
     - name: Build
       run: cargo build --verbose
     - name: Run program
-      run: cargo run | xxd
+      run: cargo run -- --help | xxd
     - name: Example output from some other command
       run: grep --help 2>&1 | xxd
