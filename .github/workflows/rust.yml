@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, windows-2019, macos-10.15 ]
+        os: [ windows-2019 ]
     steps:
     # actions/checkout@v2
     - uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b
@@ -15,6 +15,12 @@ jobs:
       run: rustc -V
     - name: Build
       run: cargo build --verbose
-    - name: Run program
+    - name: Run program via cargo
       run: cargo run 2>&1 | xxd || true
+      shell: bash
+    - name: Run program normally
+      run: ./target/debug/dap-win-test.exe | xxd || true
+      shell: bash
+    - name: Run program with --help
+      run: ./target/debug/dap-win-test.exe --help | xxd || true
       shell: bash
