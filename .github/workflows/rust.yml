@@ -11,8 +11,10 @@ jobs:
     steps:
     # actions/checkout@v2
     - uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b
+    - name: Report versions
+      run: rustc -V
     - name: Build
       run: cargo build --verbose
     - name: Run program
-      run: cargo run 2>&1 | xxd || true
+      run: cargo run 2>&1 | xxd
       shell: bash
