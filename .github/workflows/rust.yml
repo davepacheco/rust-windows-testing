@@ -16,4 +16,4 @@ jobs:
     - name: Run program
       run: cargo run | xxd
     - name: Example output from some other command
-      run: grep --help
+      run: grep --help | true
